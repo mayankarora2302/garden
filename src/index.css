@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Palette - Midnight Garden */
+  --color-emerald-dark: #1a4d2e;
+  --color-emerald-default: #2d5f3f;
+  --color-cream-light: #faf8f3;
+  --color-cream-default: #f5f1e8;
+  --color-gold: #d4af37;
+  --color-gold-light: #f4e4c1;
+
+  /* Enhanced Flower Themes */
+  /* Midnight Peony - Moody, romantic, expensive */
+  --color-midnight-forest: #1A2F23;
+  --color-soft-peony: #E6AACE;
+  --color-peony-dark: #C48BA8;
+
+  /* Vintage Ranunculus - Antique, warm, sentimental */
+  --color-old-lace: #FDF5E6;
+  --color-sepia-stem: #8B4513;
+  --color-vintage-cream: #F5E6D3;
+
+  /* White Jasmine - Royal, clean, minimalist luxury */
+  --color-pure-white: #FFFFFF;
+  --color-antique-gold: #D4AF37;
+  --color-jasmine-green: #E8F5E9;
+
+  /* Custom Animations for Motion */
+  @keyframes bloom {
+    0% {
+      transform: scale(0.8) translateY(10px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes petal-fall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+  }
+
+  --animate-bloom: bloom 2s ease-out forwards;
+  --animate-petal-fall: petal-fall 10s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,400&family=Inter:wght@300..600&display=swap');
+
+@layer base {
+  * {
+    /* This now points to the variable defined in @theme */
+    border-color: var(--color-gold);
+    border-opacity: 0.2;
+  }
+
+  body {
+    background: linear-gradient(180deg, #0a1628 0%, #1a2f3f 50%, #0f1e2e 100%);
+    color: var(--color-cream-light);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    cursor: none;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer utilities {
+  .grain-filter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .parchment {
+    background-color: #fcfaf2;
+    background-image: radial-gradient(at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 80%);
+  }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
