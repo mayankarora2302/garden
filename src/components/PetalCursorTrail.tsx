@@ -14,14 +14,12 @@ interface Petal {
 
 export const PetalCursorTrail = () => {
     const [petals, setPetals] = useState<Petal[]>([]);
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         let petalId = 0;
         let lastSpawnTime = 0;
 
         const handleMouseMove = (e: MouseEvent) => {
-            setMousePos({ x: e.clientX, y: e.clientY });
 
             const now = Date.now();
             // Spawn petals more frequently (every 50ms instead of 100ms)

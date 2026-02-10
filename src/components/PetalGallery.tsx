@@ -56,7 +56,6 @@ export const PetalGallery = () => {
                         <PetalImage
                             key={index}
                             memory={memory}
-                            index={index}
                             onClick={() => setSelectedMemory(index)}
                         />
                     ))}
@@ -76,7 +75,7 @@ export const PetalGallery = () => {
     );
 };
 
-const PetalImage = ({ memory, index, onClick }: { memory: typeof MEMORIES[0]; index: number; onClick: () => void }) => {
+const PetalImage = ({ memory, onClick }: { memory: typeof MEMORIES[0]; onClick: () => void }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     // Random values for natural petal fall

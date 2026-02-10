@@ -26,7 +26,6 @@ export const GrowingLetter = () => {
     });
 
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-    const vineGrowth = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
     return (
         <div
